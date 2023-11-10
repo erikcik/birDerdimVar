@@ -4,21 +4,8 @@ import Post from "./components/post";
 import Link from "next/link";
 
 const getPosts = async () => {
-  // const posts = await prisma.post.findMany({
-  //   where: { published: false },
-  //   include: {
-  //     author: {
-  //       select: { name: true },
-  //     },
-  //   },
-  // });
-  // return posts;
-
-  const res: any = await fetch("http://localhost:3000/denemelik/api/posts");
-  if (!res.ok) {
-    throw new Error("failed to fetch");
-  }
-  return res.json();
+  const res = await import("../app/api/show-post/route");
+  return await (await res.GET()).json();
 };
 
 export default async function Home() {
