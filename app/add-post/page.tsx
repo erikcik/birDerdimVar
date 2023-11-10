@@ -5,7 +5,7 @@ type postType = {
   content: string;
 };
 
-export default function addPost() {
+export default function AddPost() {
   const [post, setPost] = useState<postType>({ title: "", content: "" });
 
   const handleChange = (
