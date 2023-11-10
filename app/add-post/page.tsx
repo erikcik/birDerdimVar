@@ -22,15 +22,21 @@ export default function AddPost() {
     e.preventDefault();
     console.log("Submiting Post", post);
     try {
-      fetch("/api/add-post", {
+      const response = await fetch("/api/add-post", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(post),
       });
+
+      if (!response.ok) {
+        throw new Error("Failed to submit post");
+      }
+
+      // Handle successful response here
     } catch (error) {
-      console.log(error);
+      console.error("An error occurred:", error);
     }
 
     setPost({ title: "", content: "" });
