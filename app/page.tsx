@@ -17,7 +17,8 @@ const getPosts = async () => {
   });
   return posts;
 };
-//bruh
+//bruhhsadasdas
+//sadas
 export default async function Home() {
   const post = await getPosts();
   return (
