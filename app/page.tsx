@@ -17,7 +17,7 @@ const getPosts = async () => {
   });
   return posts;
 };
-
+//bruh
 export default async function Home() {
   const post = await getPosts();
   return (
