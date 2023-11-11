@@ -4,8 +4,18 @@ import Post from "./components/post";
 import Link from "next/link";
 
 const getPosts = async () => {
-  const res = await import("../app/api/show-post/route");
-  return await (await res.GET()).json();
+  // const res = await import("../app/api/show-post/route");
+  // return await (await res.GET()).json();
+
+  const posts = await prisma.post.findMany({
+    where: { published: false },
+    include: {
+      author: {
+        select: { name: true },
+      },
+    },
+  });
+  return posts;
 };
 
 export default async function Home() {
